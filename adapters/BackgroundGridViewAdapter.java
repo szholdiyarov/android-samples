@@ -20,11 +20,11 @@ import kz.telecom.happydrive.data.BackgroundPhotos;
  * Created by szholdiyarov on 5/13/16.
  */
 public class BackgroundGridViewAdapter extends BaseAdapter {
-    private Context mContext;
+    private Context context;
     private List<BackgroundPhotos> list;
 
-    public BackgroundGridViewAdapter(Context c, List<BackgroundPhotos> list) {
-        mContext = c;
+    public BackgroundGridViewAdapter(Context context, List<BackgroundPhotos> list) {
+        this.context = context;
         this.list = list;
     }
 
@@ -33,12 +33,9 @@ public class BackgroundGridViewAdapter extends BaseAdapter {
     }
 
     public Object getItem(int position) {
-        return null;
+        return list.get(position);
     }
-
-    public long getItemId(int position) {
-        return 0;
-    }
+    
 
     // create a new ImageView for each item referenced by the Adapter
     public View getView(int position, View convertView, ViewGroup parent) {

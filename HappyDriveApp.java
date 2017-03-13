@@ -22,9 +22,14 @@ import kz.telecom.happydrive.util.Logger;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 /**
- * Created by Galymzhan Sh on 10/27/15.
+ * Created by Sanzhar Zholdiyarov on 10/27/16.
  */
 public class HappyDriveApp extends Application {
+    private final static String TAG = HappyDriveApp.class.getSimpleName();
+    private final static String PARSE_TOKEN = " "; // TODO: Should be available only from gradle
+    private final static String PARSE_TOKEN_2 = " ";
+    
+    
     @Override
     public void onCreate() {
         super.onCreate();
@@ -34,19 +39,19 @@ public class HappyDriveApp extends Application {
             @Override
             public void onVKAccessTokenChanged(VKAccessToken oldToken, VKAccessToken newToken) {
                 if (newToken == null) {
-                    Log.d("vk", "token is invalid");
+                    Log.d(TAG, "vk token is invalid");
                 }
             }
         };
         vkAccessTokenTracker.startTracking();
         VKSdk.initialize(this);
 
-        Parse.initialize(this, "Ui29l0hA6jcp2x8wQ1I8DaWhod3thG5qYBFE3g9z", "KxuNX9dJtSeqcgsu9MTZQAFSwRT7pR1V2vrZU65S");
+        Parse.initialize(this, PARSE_TOKEN, PARSE_TOKEN_2);
         ParseInstallation.getCurrentInstallation().saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
                 if (e != null) {
-                    e.printStackTrace();
+                    Log.e(TAG, "Exception with parse occured. The stacktrace : " + e.getMessage()); // TODO: Add Firabase crash report to log
                 }
             }
         });

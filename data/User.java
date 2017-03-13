@@ -30,6 +30,7 @@ import kz.telecom.happydrive.util.Utils;
 
 // TODO more secure way to store passwords (AccountManager)
 // TODO thread safe consistent simultaneous currentUser() calls
+
 public class User {
     @SuppressWarnings("unused")
     private static final String PREFS_NAME = "hd.user";
